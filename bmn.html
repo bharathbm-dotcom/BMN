@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>BMN</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .item { padding: 8px; border-bottom: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+
+  <h1 id="title"></h1>
+  <div id="list"></div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem('bmnData'));
+
+    document.getElementById('title').textContent = data.title;
+
+    const list = document.getElementById('list');
+    data.items.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.textContent = `${item.name} - ${item.status}`;
+      list.appendChild(div);
+    });
+  </script>
+
+</body>
+</html>
