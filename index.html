@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Load YAML</title>
+</head>
+<body>
+  <h2>Loading data...</h2>
+
+  <script src="js/yaml.min.js"></script>
+  <script>
+    fetch('data.yaml')
+      .then(response => response.text())
+      .then(text => {
+        const yamlData = jsyaml.load(text);
+        localStorage.setItem('bmnData', JSON.stringify(yamlData));
+        window.location.href = 'bmn.html';
+      })
+      .catch(err => console.error('YAML load error:', err));
+  </script>
+</body>
+</html>
