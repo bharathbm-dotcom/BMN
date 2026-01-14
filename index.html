@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Load YAML</title>
-</head>
-<body>
-  <h2>Loading data...</h2>
+  <head>
+    <title>PIN API Documentation</title>
+    <meta charset="utf-8"/>
 
-  <script src="js-yaml.min.js"></script>
-  <script>
-    fetch('data.yaml')
-      .then(response => response.text())
-      .then(text => {
-        const yamlData = jsyaml.load(text);
-        localStorage.setItem('bmnData', JSON.stringify(yamlData));
-        window.location.href = 'bmn.html';
-      })
-      .catch(err => console.error('YAML load error:', err));
-  </script>
-</body>
+    <!-- Redoc -->
+    <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <redoc spec-url="data.yaml"></redoc>
+  </body>
 </html>
